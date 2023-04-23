@@ -27,13 +27,22 @@ function imgCollectionCreate(img) {
 
 function eventImgTarget(e){
     e.preventDefault();
-    console.log(e.target)
 
 if (!e.target.classList.contains('gallery__image')){return}
 const instance = basicLightbox.create(`
-    <img src="${e.target.dataset.source}" width="800" height="600">
-`)
-
+<img src="${e.target.dataset.source}" width="800" height="600">`, {
+    onShow: function() {
+        window.addEventListener("keydown", escapeHandler);
+    },
+    onClose: function() {
+        window.removeEventListener("keydown", escapeHandler);
+    }
+});
 instance.show()
+
+function escapeHandler(event) {
+    if (event.key === "Escape") {
+      instance.close();
+    }}
 }
 
