@@ -6,7 +6,7 @@ const gallary = document.querySelector('.gallery')
 const imageCollection = imgCollectionCreate(galleryItems)
 
 gallary.insertAdjacentHTML("beforeend", imageCollection)
-gallary.addEventListener("click", eventImgTarget)
+// gallary.addEventListener("click", eventImgTarget)
 
 function imgCollectionCreate(img) {
     return img
@@ -19,12 +19,10 @@ function imgCollectionCreate(img) {
 })
 .join('')}
 
-function eventImgTarget(e){
-    e.preventDefault();
 
-if (!e.target.classList.contains('gallery__image')){return}
+
+
 const gallery = new SimpleLightbox('.gallery a',{
     captionsData: 'alt',
-    captionsDelay: 250,
+    
 });
-}
